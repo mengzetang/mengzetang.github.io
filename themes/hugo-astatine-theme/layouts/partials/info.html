@@ -11,7 +11,7 @@
             {{ end }}
             <source srcset="{{ .Site.Params.imgname.Name }}"
                     {{ if .Site.Params.imgname.Type }} type="{{ .Site.Params.Imgname.Type }}"{{ end }}>
-            <img class="main-image u-photo mx-auto rounded-full object-cover"
+            <img class="main-image u-photo mx-auto rounded-full object-cover aspect-square w-40 h-40"
             itemprop="contentUrl" alt="{{ .Site.Params.Imgname.Alt }}"
                  src="{{ .Site.Params.imgname.Name }}">
         </picture>
