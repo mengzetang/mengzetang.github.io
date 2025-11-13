@@ -78,7 +78,7 @@ pygmentsStyle = "native"
     [params.dateFormat]
         dateFormat = "Jan 02 2006"
     [params.imgname]
-        name = "static/img/profile.jpg"
+        name = "img/profile.jpg"
         # Add an alt description for the image
         alt = "Profile picture"
 
