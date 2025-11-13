@@ -21,10 +21,10 @@ personal_title: "CS PhD Student"
 address: 
   - 
     name: 
-    locality: University of Wisconsin - Madison
-    email: mengze [dot] tang [at] wisc.edu
+    locality: University of Wisconsin–Madison
+    email: mengze [at] cs.wisc.edu
     googlescholar: "https://scholar.google.com/citations?user=0sTTo00AAAAJ&hl=en"
-    linkedin: "https://www.linkedin.com/in/mengze-tang/"
+    # linkedin: "https://www.linkedin.com/in/mengze-tang/"
     github: madmtang
     # cv: ".pdf"
 
