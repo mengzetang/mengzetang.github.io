@@ -5,7 +5,7 @@
 name: "Mengze Tang"
 # Your profile picture
 imgname: 
-  name: "img/profile.jpg"
+  name: "img/profile.png"
   alt: "Profile picture"
   type: image/jpeg
 # More sources can be added (optional) using 
