@@ -305,6 +305,21 @@
         padding: 0.4in;
       }
     }
+
+    .quote-list blockquote {
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid #ccc;
+      font-style: italic;
+      color: #333;
+    }
+
+    .quote-list cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: normal;
+      color: #555;
+    }
   </style>
 </head>
 
@@ -333,7 +348,7 @@
     <h2>News</h2>
     <div class="entry">
       <div class="margin-text">Sep 25</div>
-      <p class="entry-text">Kicking off my PhD grind. (Update: Why would I want to do it?)</p>
+      <p class="entry-text">Kicking off my PhD grind. (Update: Why did I want to do it?)</p>
     </div>
     <div class="entry">
       <div class="margin-text">Apr 25</div>
@@ -382,18 +397,22 @@
     </div>
     <div class="entry">
       <div class="margin-text">Musics</div>
-      <p class="entry-text">I like listening to cantonese pop music, especially Eason Chan.</p>
-      <p class="entry-text">I'm learning to play the guitar right now.</p>
-    </div>
-    <div class="entry">
-      <div class="margin-text">Quotations</div>
-      <p class="entry-text">“If you can meet with Triumph and Disaster; And treat those two impostors just the same;” -
-        Rudyard Kipling</p>
+      <p class="entry-text">I like listening to cantonese pop music, especially Eason Chan. I'm also learning to play
+        the guitar right now.</p>
     </div>
     <div class="entry">
       <div class="margin-text">Reference</div>
-      <p class="entry-text">This site is stolen from <a href="https://pages.cs.wisc.edu/~aws/">Prof. Aws Albarghouthi's
-          page</a>.</p>
+      <p class="entry-text">This page's layout is stolen from <a href="https://pages.cs.wisc.edu/~aws/">Prof. Aws
+          Albarghouthi's page</a>.</p>
+    </div>
+
+    <!-- add some space -->
+    <div style="height:1em;"></div>
+    <div class="quote-list">
+      <blockquote>
+        <p>"I did it for me. I liked it. I was good at it. And, I was really... I was alive.”</p>
+        <cite>– Walter White</cite>
+      </blockquote>
     </div>
 
 </body>
