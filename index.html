@@ -320,6 +320,58 @@
       font-style: normal;
       color: #555;
     }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #000;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      h2 {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      a:link,
+      a:visited {
+        color: rgba(255, 255, 255, 0.85);
+        border-bottom-color: rgba(255, 255, 255, 0.35);
+      }
+
+      a:hover,
+      a:active {
+        border-bottom-color: rgba(255, 255, 255, 0.6);
+      }
+
+      .entry-note {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .margin-text,
+      .margin-text a,
+      .margin-text a:link,
+      .margin-text a:visited,
+      .margin-text a:hover,
+      .margin-text a:active {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      b {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .quote-list blockquote {
+        border-left-color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .quote-list cite {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      ::selection {
+        background: rgba(255, 120, 150, 0.35);
+      }
+    }
   </style>
 </head>
 
