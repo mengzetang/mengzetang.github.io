@@ -133,8 +133,17 @@
   <link rel="icon" type="image/png" href="images/light.png" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/png" href="images/dark.png" media="(prefers-color-scheme: dark)">
   <style>
+    :root {
+      --text: rgba(7, 23, 29, 0.86);
+      --text-soft: rgba(7, 23, 29, 0.54);
+      --accent: #0f9db0;
+      --accent-strong: #00d4ff;
+      --line: rgba(7, 23, 29, 0.24);
+      --quote-line: rgba(7, 23, 29, 0.2);
+    }
+
     ::selection {
-      background: rgba(255, 55, 95, 0.2);
+      background: rgba(0, 212, 255, 0.22);
     }
 
     #img {
@@ -156,7 +165,7 @@
     body {
       padding: 90px 0;
       font: 16px 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: rgba(0, 0, 0, .8);
+      color: var(--text);
       font-weight: 300;
       line-height: 1.5;
       display: flex;
@@ -178,19 +187,21 @@
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--text-soft);
     }
 
     a:link,
     a:visited {
-      color: rgba(0, 0, 0, 0.8);
+      color: var(--text);
       text-decoration: none;
-      border-bottom: 1.5px dotted rgba(0, 0, 0, 0.3);
+      border-bottom: 1.5px dotted var(--line);
+      transition: color 180ms ease, border-bottom-color 180ms ease;
     }
 
     a:hover,
     a:active {
-      border-bottom-color: rgba(0, 0, 0, 0.5);
+      color: var(--accent);
+      border-bottom-color: var(--accent-strong);
     }
 
     .container-fluid {
@@ -219,7 +230,7 @@
       margin: 0;
       line-height: 1.5;
       font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--text-soft);
       font-size: 0.85em;
     }
 
@@ -228,7 +239,7 @@
       right: calc(100% + 1.3em);
       top: 0.15em;
       text-align: right;
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--text-soft);
       font-size: 0.85em;
       white-space: nowrap;
       overflow: hidden;
@@ -243,14 +254,19 @@
     .margin-text a:visited,
     .margin-text a:hover,
     .margin-text a:active {
-      color: rgba(0, 0, 0, 0.5);
+      color: var(--text-soft);
       text-decoration: none;
       border-bottom: none;
     }
 
     b {
-      color: rgba(0, 0, 0, .8);
+      color: var(--text);
       font-weight: 600;
+      text-shadow: 0 0 14px rgba(0, 212, 255, 0.12);
+    }
+
+    a {
+      transition: color 180ms ease, border-bottom-color 180ms ease;
     }
 
     @media print,
@@ -311,41 +327,56 @@
     .quote-list blockquote {
       margin: 1rem 0;
       padding-left: 1rem;
-      border-left: 4px solid #ccc;
+      border-left: 4px solid var(--quote-line);
       font-style: italic;
-      color: #333;
+      color: var(--text);
     }
 
     .quote-list cite {
       display: block;
       margin-top: 0.5rem;
       font-style: normal;
-      color: #555;
+      color: var(--text-soft);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      a {
+        transition: none;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
+      :root {
+        --text: rgba(235, 249, 255, 0.84);
+        --text-soft: rgba(214, 239, 247, 0.62);
+        --accent: #6defff;
+        --accent-strong: #2ff3ff;
+        --line: rgba(163, 229, 240, 0.3);
+        --quote-line: rgba(163, 229, 240, 0.24);
+      }
+
       body {
-        background: #000;
-        color: rgba(255, 255, 255, 0.82);
+        background: #0a1117;
+        color: var(--text);
       }
 
       h2 {
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-soft);
       }
 
       a:link,
       a:visited {
-        color: rgba(255, 255, 255, 0.85);
-        border-bottom-color: rgba(255, 255, 255, 0.35);
+        color: var(--text);
+        border-bottom-color: var(--line);
       }
 
       a:hover,
       a:active {
-        border-bottom-color: rgba(255, 255, 255, 0.6);
+        border-bottom-color: var(--accent-strong);
       }
 
       .entry-note {
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-soft);
       }
 
       .margin-text,
@@ -354,24 +385,24 @@
       .margin-text a:visited,
       .margin-text a:hover,
       .margin-text a:active {
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-soft);
       }
 
       b {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(245, 252, 255, 0.92);
       }
 
       .quote-list blockquote {
-        border-left-color: rgba(255, 255, 255, 0.25);
-        color: rgba(255, 255, 255, 0.8);
+        border-left-color: var(--quote-line);
+        color: var(--text);
       }
 
       .quote-list cite {
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-soft);
       }
 
       ::selection {
-        background: rgba(255, 120, 150, 0.35);
+        background: rgba(0, 212, 255, 0.28);
       }
     }
   </style>
