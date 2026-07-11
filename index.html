@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <script>
@@ -111,25 +111,36 @@
       nameElement.addEventListener('click', function () {
         marginTexts.forEach(text => scrambleText(text));
       });
-
-      // Run when hovering over the name
-      nameElement.addEventListener('mouseover', function () {
-        marginTexts.forEach(text => scrambleText(text));
-      });
     });
   </script>
-  <script src="jquery.js"></script>
-  <script>
-    $(function () {
-      $("#includedContent").load("generated.html");
-    });
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@300;400;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+Pro:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mengze Tang</title>
+  <meta name="author" content="Mengze Tang">
+  <meta name="description"
+    content="Mengze Tang — first-year computer science PhD student at UW–Madison, working on making coding agents more competent and reliable.">
+  <link rel="canonical" href="https://mengze.org/">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a1117" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mengze.org/">
+  <meta property="og:title" content="Mengze Tang">
+  <meta property="og:description"
+    content="Mengze Tang — first-year computer science PhD student at UW–Madison, working on making coding agents more competent and reliable.">
+  <meta property="og:image" content="https://mengze.org/images/art.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mengze Tang">
+  <meta name="twitter:description"
+    content="First-year computer science PhD student at UW–Madison, working on making coding agents more competent and reliable.">
+  <meta name="twitter:image" content="https://mengze.org/images/art.jpg">
+
   <link rel="icon" type="image/png" href="images/light.png" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/png" href="images/dark.png" media="(prefers-color-scheme: dark)">
   <style>
@@ -155,7 +166,16 @@
       border-radius: 50%;
       margin: 0;
       margin-top: .5em;
+      cursor: pointer;
       filter: contrast(110%) brightness(110%);
+      transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 350ms ease, filter 350ms ease;
+    }
+
+    #img:hover {
+      transform: scale(1.06) rotate(-2deg);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.25);
+      filter: contrast(115%) brightness(115%) saturate(115%);
     }
 
     p {
@@ -342,6 +362,10 @@
       a {
         transition: none;
       }
+
+      #img {
+        transition: none;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
@@ -514,6 +538,7 @@
         <cite>– Walter White</cite>
       </blockquote>
     </div>
+  </div>
 
 </body>
 
