@@ -6,7 +6,7 @@
     function toggle(t, id) {
       console.log(t.innerHTML)
       if (t.innerHTML == "all papers") {
-        t.innerHTML = "recent papers";
+        t.innerHTML = "selected papers";
       } else {
         t.innerHTML = "all papers";
       }
@@ -478,15 +478,14 @@
     </div> -->
 
     <h2>Publications</h2>
-    <!-- <p style="margin-bottom:1.5em"> see <a href="javascript:;" onclick="toggle(this,'papers')">all papers</a>
-      &nbsp;·&nbsp; preprints on <a
-        href="https://arxiv.org/search/?query=aws+albarghouthi&searchtype=all&source=header">arxiv</a></p> -->
+    <p style="margin-bottom:1.5em"> see <a href="javascript:;" onclick="toggle(this,'papers')">all papers</a></p>
     <div class="entry">
-      <div class="margin-text">USENIX OSDI 25</div>
-      <p class="entry-text"><a href="https://www.usenix.org/conference/osdi25/presentation/mohoney"
-          target="_blank">Quake: Adaptive Indexing for Vector Search</a></p>
-      <p class="entry-note">Jason Mohoney, Devesh Sarda, <b>Mengze Tang</b>, Shihabur Rahman Chowdhury, Anil Pacaci,
-        Ihab F. Ilyas, Theodoros Rekatsinas, Shivaram Venkataraman</p>
+      <div class="margin-text">arXiv 26</div>
+      <p class="entry-text"><a href="https://arxiv.org/abs/2609.04298" target="_blank">Harbor
+          Adapters and Harbor-Index: Infrastructure and a Curated Meta-Dataset for Large-Scale Agentic Evaluation</a>
+      </p>
+      <p class="entry-note">Lin Shi, Haowei Lin, Zixuan Zhu, ..., <b>Mengze Tang</b>, ..., Andy Konwinski, Boxuan Li,
+        Leon Liangyu Chen, Alex Dimakis, Nicholas Carlini, ..., Mike A Merrill, Ludwig Schmidt, Alex Shaw</p>
     </div>
     <div class="entry">
       <div class="margin-text">Nature 26</div>
@@ -500,18 +499,22 @@
       <p class="entry-note">Center for AI Safety, Scale AI</p>
     </div> -->
     <div class="entry">
-      <div class="margin-text">Bull. Math. Biol. 26</div>
-      <p class="entry-text"><a href="https://www.biorxiv.org/content/10.1101/2025.11.19.689264v2"
-          target="_blank">Ancestral Sequences Cannot be Accurately Reconstructed via Interpolation in a Variational
-          Autoencoder's Latent Space</a></p>
-      <p class="entry-note">Evan Gorstein, <b>Mengze Tang</b>, Hailey Bruzzone, Claudia Solís-Lemus</p>
+      <div class="margin-text">OSDI 25</div>
+      <p class="entry-text"><a href="https://www.usenix.org/conference/osdi25/presentation/mohoney"
+          target="_blank">Quake: Adaptive Indexing for Vector Search</a></p>
+      <p class="entry-note">Jason Mohoney, Devesh Sarda, <b>Mengze Tang</b>, Shihabur Rahman Chowdhury, Anil Pacaci,
+        Ihab F. Ilyas, Theodoros Rekatsinas, Shivaram Venkataraman</p>
     </div>
-    <!-- <div id="papers" style="display:none;">
+    <!-- Start of hidden papers section -->
+    <div id="papers" style="display:none;">
       <div class="entry">
-        <div class="margin-text"><a href="./papers/pldi23.pdf">PLDI 23</a></div>
-        <p class="entry-text">Synthesizing quantum-circuit optimizers</p>
+        <div class="margin-text">Bull. Math. Biol. 26</div>
+        <p class="entry-text"><a href="https://www.biorxiv.org/content/10.1101/2025.11.19.689264v2"
+            target="_blank">Ancestral Sequences Cannot be Accurately Reconstructed via Interpolation in a Variational
+            Autoencoder's Latent Space</a></p>
+        <p class="entry-note">Evan Gorstein, <b>Mengze Tang</b>, Hailey Bruzzone, Claudia Solís-Lemus</p>
       </div>
-    </div> -->
+    </div>
 
     <h2>Miscellaneous</h2>
     <div class="entry">
