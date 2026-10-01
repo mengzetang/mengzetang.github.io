@@ -304,6 +304,19 @@
       border-bottom: none;
     }
 
+    /* pdf · slides · code, on the line under the venue */
+    .margin-links {
+      display: block;
+    }
+
+    .margin-links a {
+      color: var(--accent);
+    }
+
+    .margin-links a:hover {
+      color: var(--accent-hover);
+    }
+
     .quote-list {
       margin-top: var(--space-xl);
     }
@@ -369,6 +382,14 @@
         width: auto;
         line-height: var(--leading);
         text-align: left;
+      }
+
+      .margin-links {
+        display: inline;
+      }
+
+      .margin-links::before {
+        content: " · ";
       }
 
       .entry {
@@ -445,7 +466,9 @@
     <h2>Publications <span class="h2-aside">see <a href="javascript:;" onclick="toggle(this,'papers')">all
           papers</a></span></h2>
     <div class="entry">
-      <div class="margin-text">NeurIPS '26 ED</div>
+      <div class="margin-text">NeurIPS '26 ED<span class="margin-links"><a href="https://arxiv.org/pdf/2609.04298"
+            target="_blank">pdf</a> · <a href="https://github.com/harbor-framework/harbor" target="_blank">code</a> · <a
+            href="https://harbor-index.org/" target="_blank">blog</a></span></div>
       <p class="entry-text"><a href="https://arxiv.org/abs/2609.04298" target="_blank">Harbor
           Adapters and Harbor-Index: Infrastructure and a Curated Meta-Dataset for Large-Scale Agentic Evaluation</a>
       </p>
@@ -453,7 +476,10 @@
         Leon Liangyu Chen, Alex Dimakis, Nicholas Carlini, ..., Mike A Merrill, Ludwig Schmidt, Alex Shaw</p>
     </div>
     <div class="entry">
-      <div class="margin-text">Nature '26</div>
+      <div class="margin-text">Nature '26<span class="margin-links"><a href="https://arxiv.org/pdf/2501.14249"
+            target="_blank">pdf</a> · <a href="https://github.com/centerforaisafety/hle" target="_blank">code</a> · <a
+            href="https://lastexam.ai/" target="_blank">website</a></span>
+      </div>
       <p class="entry-text"><a href="https://www.nature.com/articles/s41586-025-09962-4" target="_blank">A benchmark of
           expert-level academic questions to assess AI capabilities</a></p>
       <p class="entry-note">Center for AI Safety, Scale AI & HLE Contributors Consortium</p>
@@ -464,7 +490,12 @@
       <p class="entry-note">Center for AI Safety, Scale AI</p>
     </div> -->
     <div class="entry">
-      <div class="margin-text">OSDI '25</div>
+      <div class="margin-text">OSDI '25<span class="margin-links"><a
+            href="https://www.usenix.org/system/files/osdi25-mohoney.pdf" target="_blank">pdf</a> · <a
+            href="https://www.usenix.org/sites/default/files/conference/protected-files/osdi25_slides_mohoney_jason.pdf"
+            target="_blank">slides</a> · <a href="https://github.com/marius-team/quake" target="_blank">code</a> · <a
+            href="https://www.youtube.com/watch?v=8YI6DkhwAgo" target="_blank">video</a></span>
+      </div>
       <p class="entry-text"><a href="https://www.usenix.org/conference/osdi25/presentation/mohoney"
           target="_blank">Quake: Adaptive Indexing for Vector Search</a></p>
       <p class="entry-note">Jason Mohoney, Devesh Sarda, <b>Mengze Tang</b>, Shihabur Rahman Chowdhury, Anil Pacaci,
@@ -473,7 +504,9 @@
     <!-- Start of hidden papers section -->
     <div id="papers" style="display:none;">
       <div class="entry">
-        <div class="margin-text">Bull. Math. Biol. '26</div>
+        <div class="margin-text">Bull. Math. Biol. '26<span class="margin-links"><a
+              href="https://www.biorxiv.org/content/10.1101/2025.11.19.689264v2.full.pdf" target="_blank">pdf</a> · <a
+              href="https://github.com/solislemuslab/asr-ae/" target="_blank">code</a></span></div>
         <p class="entry-text"><a href="https://link.springer.com/article/10.1007/s11538-026-01749-6"
             target="_blank">Ancestral Sequences Cannot be Accurately Reconstructed via Interpolation in a Variational
             Autoencoder's Latent Space</a></p>
