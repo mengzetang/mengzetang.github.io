@@ -4,14 +4,10 @@
 <head>
   <script>
     function toggle(t, id) {
-      console.log(t.innerHTML)
-      if (t.innerHTML == "all papers") {
-        t.innerHTML = "selected papers";
-      } else {
-        t.innerHTML = "all papers";
-      }
       var e = document.getElementById(id);
-      e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+      var showAll = e.style.display != 'block';
+      e.style.display = showAll ? 'block' : 'none';
+      t.innerHTML = showAll ? "selected papers" : "all papers";
     }
 
     // Scramble text function
@@ -113,11 +109,6 @@
       });
     });
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@300;400;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+Pro:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mengze Tang</title>
@@ -125,7 +116,7 @@
   <meta name="description" content="Mengze Tang — second-year computer science PhD student at UW–Madison">
   <link rel="canonical" href="https://mengze.org/">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0a1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0a0f1f" media="(prefers-color-scheme: dark)">
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
@@ -142,27 +133,128 @@
   <link rel="icon" type="image/png" href="images/dark.png" media="(prefers-color-scheme: dark)">
   <style>
     :root {
-      --text: rgba(7, 23, 29, 0.86);
-      --text-soft: rgba(7, 23, 29, 0.54);
-      --accent: #0f9db0;
-      --accent-strong: #00d4ff;
-      --line: rgba(7, 23, 29, 0.24);
-      --quote-line: rgba(7, 23, 29, 0.2);
+      /* color: Klein Blue (#002FA7) core, navy-tinted ink neutrals */
+      --bg: #ffffff;
+      --text: rgba(10, 16, 38, 0.86);
+      --text-strong: rgba(10, 16, 38, 0.96);
+      --text-soft: rgba(10, 16, 38, 0.6);
+      --label: rgba(10, 16, 38, 0.7);
+      --accent: #002fa7;
+      --accent-hover: #2d5be3;
+      --line: rgba(0, 47, 167, 0.16);
+      --quote-line: rgba(0, 47, 167, 0.4);
+      --selection: rgba(0, 47, 167, 0.14);
+      --ring: rgba(0, 47, 167, 0.3);
+
+      /* type: one body size, one small size, one leading */
+      --leading: 1.6;
+      --small: 0.85rem;
+
+      /* spacing scale */
+      --space-s: 0.5rem;
+      --space-m: 1rem;
+      --space-l: 1.5rem;
+      --space-xl: 3rem;
+
+      /* left column holding the avatar and entry labels */
+      --gutter: 8.5rem;
+      --label-gap: 1.25rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Klein Blue is too dark to read on navy, so links use a lifted tint of it */
+        --bg: #0a0f1f;
+        --text: rgba(232, 237, 255, 0.86);
+        --text-strong: rgba(240, 244, 255, 0.94);
+        --text-soft: #9aa5c4;
+        --label: #aab4d2;
+        --accent: #7b97ff;
+        --accent-hover: #b8c7ff;
+        --line: rgba(123, 151, 255, 0.2);
+        --quote-line: rgba(123, 151, 255, 0.45);
+        --selection: rgba(0, 47, 167, 0.6);
+        --ring: rgba(123, 151, 255, 0.35);
+      }
     }
 
     ::selection {
-      background: rgba(0, 212, 255, 0.22);
+      background: var(--selection);
+    }
+
+    body {
+      margin: 0;
+      padding: 5.5rem 0;
+      display: flex;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Avenir Next', Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: var(--leading);
+    }
+
+    p {
+      margin: 0 0 var(--space-m);
+    }
+
+    b {
+      color: var(--text-strong);
+      font-weight: 500;
+    }
+
+    h2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: var(--space-xl) 0 var(--space-l);
+      padding-bottom: var(--space-s);
+      border-bottom: 1px solid var(--line);
+      font-size: var(--small);
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .h2-aside {
+      color: var(--text-soft);
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      /* border-bottom: 1.5px dotted var(--line); */
+      transition: color 180ms ease, border-bottom-color 180ms ease;
+    }
+
+    a:hover,
+    a:active {
+      color: var(--accent-hover);
+      border-bottom-color: var(--accent-hover);
+    }
+
+    .container-fluid {
+      position: relative;
+      max-width: 580px;
+      padding: 0 var(--gutter);
+    }
+
+    .header {
+      position: relative;
     }
 
     #img {
       position: absolute;
-      right: calc(100% + 1.1em);
-      top: 0;
+      top: 0.5rem;
+      right: calc(100% + var(--label-gap));
       width: 60px;
       height: 60px;
-      border-radius: 50%;
       margin: 0;
-      margin-top: .5em;
+      border-radius: 50%;
       cursor: pointer;
       filter: contrast(110%) brightness(110%);
       transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -171,164 +263,116 @@
 
     #img:hover {
       transform: scale(1.06) rotate(-2deg);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.25);
+      box-shadow: 0 0 0 3px var(--ring);
       filter: contrast(115%) brightness(115%) saturate(115%);
-    }
-
-    p {
-      line-height: 1.7;
-    }
-
-    body {
-      padding: 90px 0;
-      font: 16px 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text);
-      font-weight: 300;
-      line-height: 1.5;
-      display: flex;
-      justify-content: center;
-    }
-
-    h1 {
-      font-size: 1em;
-      margin-top: 3em;
-      margin-bottom: 1.5em;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-    }
-
-    h2 {
-      font-size: 0.85em;
-      margin-top: 3em;
-      margin-bottom: 1.5em;
-      padding-bottom: 0.6em;
-      border-bottom: 1px solid var(--line);
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-soft);
-    }
-
-    a:link,
-    a:visited {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1.5px dotted var(--line);
-      transition: color 180ms ease, border-bottom-color 180ms ease;
-    }
-
-    a:hover,
-    a:active {
-      color: var(--accent);
-      border-bottom-color: var(--accent-strong);
-    }
-
-    .container-fluid {
-      width: auto;
-      max-width: 520px;
-      padding: 0 120px;
-      position: relative;
-    }
-
-    .header {
-      position: relative;
-      margin-bottom: 2em;
     }
 
     .entry {
       position: relative;
-      margin-bottom: 0.5em;
+      margin-bottom: var(--space-m);
     }
 
     .entry-text {
       margin: 0;
-      line-height: 1.5;
+    }
+
+    .entry-text+.entry-text {
+      margin-top: var(--space-s);
     }
 
     .entry-note {
       margin: 0;
-      line-height: 1.5;
-      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text-soft);
-      font-size: 0.85em;
+      font-size: var(--small);
     }
 
     .margin-text {
       position: absolute;
-      right: calc(100% + 1.3em);
-      top: 0.15em;
+      /* same line box as the entry's first line, so the baselines meet */
+      top: 1px;
+      right: calc(100% + var(--label-gap));
+      color: var(--label);
+      font-size: var(--small);
+      line-height: calc(var(--leading) * 1rem);
       text-align: right;
-      color: var(--text-soft);
-      font-size: 0.85em;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.5;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 300;
     }
 
     .margin-text a,
-    .margin-text a:link,
-    .margin-text a:visited,
-    .margin-text a:hover,
-    .margin-text a:active {
-      color: var(--text-soft);
-      text-decoration: none;
+    .margin-text a:hover {
+      color: inherit;
       border-bottom: none;
     }
 
-    b {
-      color: var(--text);
-      font-weight: 600;
+    .quote-list {
+      margin-top: var(--space-xl);
     }
 
-    a {
-      transition: color 180ms ease, border-bottom-color 180ms ease;
+    .quote-list blockquote {
+      margin: 0;
+      padding-left: var(--space-m);
+      border-left: 2px solid var(--quote-line);
+      font-style: italic;
     }
 
-    @media print,
-    screen and (max-width: 720px) {
-      body {
-        padding: 30px 0;
-      }
+    .quote-list p {
+      margin: 0;
+    }
 
+    .quote-list cite {
+      display: block;
+      margin-top: var(--space-s);
+      color: var(--text-soft);
+      font-size: var(--small);
+      font-style: normal;
+    }
+
+    .footnote {
+      margin: var(--space-xl) 0 0;
+      padding-top: var(--space-m);
+      border-top: 1px solid var(--line);
+      color: var(--text-soft);
+      font-size: var(--small);
+    }
+
+    /* narrower windows: tighten the right side, let long labels wrap in the gutter */
+    @media (max-width: 880px) {
       .container-fluid {
-        padding: 0 20px 0 100px;
-        max-width: 100%;
-        margin-left: 0;
+        padding-right: var(--space-l);
       }
 
       .margin-text {
-        right: calc(100% + 1em);
-        max-width: 90px;
-        overflow: visible;
+        width: calc(var(--gutter) - var(--label-gap));
+        white-space: normal;
       }
     }
 
+    /* phones and print: single column, labels sit above their entries */
     @media print,
-    screen and (max-width: 480px) {
+    screen and (max-width: 600px) {
       body {
-        padding: 20px 0;
+        padding: var(--space-xl) 0;
       }
 
       .container-fluid {
-        padding: 0 15px 0 90px;
-        max-width: 100%;
-        margin-left: 0;
+        padding: 0 1.25rem;
       }
 
       #img {
-        position: relative;
-        right: auto;
-        top: auto;
-        margin-bottom: 20px;
+        position: static;
+        display: block;
+        margin-bottom: var(--space-l);
       }
 
       .margin-text {
-        right: calc(100% + 0.8em);
-        max-width: 80px;
-        overflow: visible;
+        position: static;
+        width: auto;
+        line-height: var(--leading);
+        text-align: left;
+      }
+
+      .entry {
+        margin-bottom: var(--space-l);
       }
     }
 
@@ -338,105 +382,16 @@
       }
 
       .container-fluid {
+        max-width: none;
         padding: 0.4in;
       }
     }
 
-    .quote-list blockquote {
-      margin: 1rem 0;
-      padding-left: 1rem;
-      border-left: 4px solid var(--quote-line);
-      font-style: italic;
-      color: var(--text);
-    }
-
-    .quote-list cite {
-      display: block;
-      margin-top: 0.5rem;
-      font-style: normal;
-      color: var(--text-soft);
-    }
-
-    .footnote {
-      margin-top: 3em;
-      padding-top: 1em;
-      border-top: 1px solid var(--line);
-      color: var(--text-soft);
-      font-size: 0.8em;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      a {
-        transition: none;
-      }
 
+      a,
       #img {
         transition: none;
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: rgba(235, 249, 255, 0.84);
-        --text-soft: rgba(214, 239, 247, 0.62);
-        --accent: #6defff;
-        --accent-strong: #2ff3ff;
-        --line: rgba(163, 229, 240, 0.3);
-        --quote-line: rgba(163, 229, 240, 0.24);
-      }
-
-      body {
-        background: #0a1117;
-        color: var(--text);
-      }
-
-      h2 {
-        color: var(--text-soft);
-      }
-
-      a:link,
-      a:visited {
-        color: var(--text);
-        border-bottom-color: var(--line);
-      }
-
-      a:hover,
-      a:active {
-        color: var(--accent);
-        border-bottom-color: var(--accent-strong);
-      }
-
-      .entry-note {
-        color: var(--text-soft);
-      }
-
-      .margin-text,
-      .margin-text a,
-      .margin-text a:link,
-      .margin-text a:visited,
-      .margin-text a:hover,
-      .margin-text a:active {
-        color: var(--text-soft);
-      }
-
-      b {
-        color: rgba(245, 252, 255, 0.92);
-      }
-
-      .quote-list blockquote {
-        border-left-color: var(--quote-line);
-        color: var(--text);
-      }
-
-      .quote-list cite {
-        color: var(--text-soft);
-      }
-
-      ::selection {
-        background: rgba(0, 212, 255, 0.28);
       }
     }
   </style>
@@ -467,7 +422,7 @@
       &nbsp;·&nbsp;
       <a href="https://scholar.google.com/citations?user=0sTTo00AAAAJ" target="_blank">scholar</a>
       &nbsp;·&nbsp;
-      mengze [at] cs.wisc.edu
+      mengze&nbsp;[at]&nbsp;cs.wisc.edu
     </p>
 
 
@@ -487,8 +442,8 @@
           target="_blank">Quake</a> will appear in OSDI 2025!</p>
     </div> -->
 
-    <h2>Publications</h2>
-    <p style="margin-bottom:1.5em"> see <a href="javascript:;" onclick="toggle(this,'papers')">all papers</a></p>
+    <h2>Publications <span class="h2-aside">see <a href="javascript:;" onclick="toggle(this,'papers')">all
+          papers</a></span></h2>
     <div class="entry">
       <div class="margin-text">NeurIPS '26 ED</div>
       <p class="entry-text"><a href="https://arxiv.org/abs/2609.04298" target="_blank">Harbor
@@ -530,14 +485,14 @@
     <div class="entry">
       <div class="margin-text">Sports</div>
       <p class="entry-text">I enjoy watching and playing football during my free time. <a
-          href="https://www.youtube.com/watch?v=mDsztJOgqUg" target="_blank">Messi</a> is the GOAT.</p>
-      <p class="entry-text">I also like watching or playing many other sports, including basketball, snooker, and
-        F1. You name it—except for the ones I do not think are sports.</p>
+          href="https://www.youtube.com/watch?v=mDsztJOgqUg" target="_blank">Messi</a> is the GOAT.
+        I also like watching or playing many other sports, including basketball, snooker, and F1. You name it—except for
+        the ones I do not think are sports.
+      </p>
     </div>
     <div class="entry">
       <div class="margin-text">Musics</div>
-      <p class="entry-text">I like listening to cantonese pop music, especially Eason Chan. I'm also learning to play
-        the guitar right now.</p>
+      <p class="entry-text">I like listening to cantonese pop music, especially Eason Chan.</p>
     </div>
     <div class="entry">
       <div class="margin-text">Reference</div>
@@ -545,8 +500,6 @@
           target="_blank">Prof. Aws Albarghouthi's page</a>.</p>
     </div>
 
-    <!-- add some space -->
-    <div style="height:1em;"></div>
     <div class="quote-list">
       <blockquote>
         <p>"I did it for me. I liked it. I was good at it. And, I was really... I was alive."</p>
@@ -554,7 +507,7 @@
       </blockquote>
     </div>
 
-    <p class="footnote">last edited <time datetime="2026-09-27">September 27, 2026</time></p>
+    <p class="footnote">last edited <time datetime="2026-10-01">October 1, 2026</time></p>
   </div>
 
 </body>
